@@ -1,8 +1,7 @@
 package com.bridgelabz.snakeandladderproblem;
 
-/* Ensure the player gets to exact winning position 100.
- * In case the player position go above 100, the player stays 
- * in the same previous position till the player gets the exact */
+/* Report the number of times the dice was played to win the game
+and also the position after every die role */
 
 public class SnakeAndLadderSimulator {
 	
@@ -11,6 +10,7 @@ public class SnakeAndLadderSimulator {
 		int startPosition = 0;
 		int currentPosition = 0;
 		int finalPosition = 100;
+		int noOfRolls = 0;
 		
 		currentPosition = startPosition;
 		while(currentPosition < finalPosition) {
@@ -18,6 +18,7 @@ public class SnakeAndLadderSimulator {
 			//Generates value between 1 to 6 for die
 			int diceValue = (int) (Math.floor(Math.random() * 10) % 6) + 1;
 			System.out.println("The player get dice value as: " + diceValue);
+			noOfRolls++;
 		
 			//Generates value 0,1 & 2 for checking the condition of no play, ladder and snake
 			int option = (int) (Math.floor(Math.random() * 10) % 3);
@@ -45,5 +46,6 @@ public class SnakeAndLadderSimulator {
 			}
 			System.out.println("Current Position: " +currentPosition);
 		}
+		System.out.println("Number Of total Dice rolls are: " + noOfRolls);
 	}
 }
