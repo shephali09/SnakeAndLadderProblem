@@ -1,20 +1,34 @@
 package com.bridgelabz.snakeandladderproblem;
 
-/* Report the number of times the dice was played to win the game
-and also the position after every die role */
+/* Play the game with 2 Player. In this case if a Player gets a Ladder
+then plays again. Finally report which Player won the game */
 
 public class SnakeAndLadderSimulator {
 	
+	public static final int startPosition = 0;
+	public static  int currentPosition = 0;
+	public static final int finalPosition = 100;
+	
 	public static void main(String[] args) {
 		
-		int startPosition = 0;
-		int currentPosition = 0;
-		int finalPosition = 100;
-		int noOfRolls = 0;
-		
 		currentPosition = startPosition;
-		while(currentPosition < finalPosition) {
-			
+		
+		int rollPlayer1 = diceRolls("player1");
+		int rollPlayer2 = diceRolls("player2");
+		
+		if(rollPlayer1 > rollPlayer2) {
+			System.out.println("Player2 is the winner");
+		}else if(rollPlayer1 < rollPlayer2) {
+			System.out.println("Player1 is winner");
+		}else {
+			System.out.println("It is a tie");
+		}
+	}
+		
+	public static int diceRolls(String player) {
+			int noOfRolls = 0;
+			currentPosition = startPosition;
+			while(currentPosition < finalPosition) {
 			//Generates value between 1 to 6 for die
 			int diceValue = (int) (Math.floor(Math.random() * 10) % 6) + 1;
 			System.out.println("The player get dice value as: " + diceValue);
@@ -46,6 +60,7 @@ public class SnakeAndLadderSimulator {
 			}
 			System.out.println("Current Position: " +currentPosition);
 		}
-		System.out.println("Number Of total Dice rolls are: " + noOfRolls);
+		System.out.println("Number Of total Dice rolls by " + player + " are: " + noOfRolls);
+		return noOfRolls;
 	}
 }
